@@ -1,10 +1,9 @@
-name: Build
+name: Release build 
 on:
-  push:
-    branches:
-      - dev
+  create:
 jobs:
   build:
+    if: ${{ startsWith(github.ref, 'refs/tags/v') }}
     strategy:
       matrix:
         os:
@@ -31,6 +30,7 @@ jobs:
         run: |
           echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
           echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+          echo "::set-output name=version::${GITHUB_REF/refs\/tags\//}"
       - name: Build docker image
         run: make docker-build
       - name: Login to DockerHub
@@ -40,4 +40,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Push docker image to DockerHub
         run: |
-          docker push neohsudroid/project-ci:${{ steps.vars.outputs.sha_short }} 
+          docker push neohsudroid/project-ci:${{ steps.vars.outputs.version }} 
