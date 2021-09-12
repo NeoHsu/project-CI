@@ -23,9 +23,3 @@ jobs:
           version: latest 
       - name: Test
         run: go test -v ./...
-      - name: Declare some variables
-        id: vars
-        shell: bash
-        run: |
-          echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
