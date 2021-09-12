@@ -21,10 +21,12 @@ jobs:
           go-version: ${{ matrix.go-version }}
       - name: Check out code
         uses: actions/checkout@v1
-      - name: golangci-lint
+      - name: Lint
         uses: golangci/golangci-lint-action@v2
         with:
           version: latest 
+      - name: Test
+        run: go test -v ./...
       - name: Declare some variables
         id: vars
         shell: bash

@@ -3,7 +3,7 @@ package health
 import (
 	"net/http"
 
-	"github.com/NeoHsu/project-CI/internal/handlers"
+	"github.com/NeoHsu/project-ci/internal/handlers"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/fx"
 )

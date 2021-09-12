@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	bundle "github.com/NeoHsu/project-CI/internal/bundle"
+	bundle "github.com/NeoHsu/project-ci/internal/bundle"
 	"go.uber.org/fx"
 )
 
