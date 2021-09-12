@@ -2,6 +2,7 @@
 
 APP?=project-ci
 COMMIT_HASH=$(shell git rev-parse --short HEAD)
+VERSION?=$(shell git rev-parse --short HEAD)
 REGISTRY?=neohsudroid
 
 
@@ -23,7 +24,7 @@ build: clean setup ## build the application
 
 .PHONY: docker-build
 docker-build: clean setup ## build docker image
-	docker build --build-arg CommitHash=${COMMIT_HASH} --build-arg BuildTime="$(shell date)" --no-cache -t ${REGISTRY}/${APP}:${COMMIT_HASH} -f build/Dockerfile .
+	docker build --build-arg CommitHash=${COMMIT_HASH} --build-arg BuildTime="$(shell date)" --no-cache -t ${REGISTRY}/${APP}:${VERSION} -f build/Dockerfile .
 
 .PHONY: docker-push
 docker-push: docker-build ## push the docker image to registry
