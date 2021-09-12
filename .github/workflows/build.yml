@@ -38,5 +38,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and push
         run: |
           docker push neohsudroid/project-ci:${{ steps.vars.outputs.sha_short }} 
