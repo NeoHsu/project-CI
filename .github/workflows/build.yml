@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - dev
   pull_request:
 jobs:
   build:
@@ -20,5 +21,25 @@ jobs:
           go-version: ${{ matrix.go-version }}
       - name: Check out code
         uses: actions/checkout@v1
+      - name: Declare some variables
+        id: vars
+        shell: bash
+        run: |
+          echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      - name: Another step
+        run: |
+          echo "Branch: ${{ steps.vars.outputs.branch }}"
+          echo "Sha: ${{ steps.vars.outputs.sha_short }}"
       - name: Build docker image
         run: make docker-build
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: neohsudroid/project-ci:${{ steps.vars.outputs.sha_short }}
