@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://www.github.com/NeoHsu/project-ci/compare/v1.0.0...v1.1.0) (2021-09-13)
+
+
+### Features
+
+* **doc:** add README.md ([93ed7d3](https://www.github.com/NeoHsu/project-ci/commit/93ed7d3d992b24563f0469bd047cfe5427a93bb8))
+
 ## 1.0.0 (2021-09-12)
 
 
