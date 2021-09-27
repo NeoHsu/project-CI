@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://www.github.com/NeoHsu/project-ci/compare/v1.1.0...v1.2.0) (2021-09-27)
+
+
+### Features
+
+* **doc:** test ([853cfff](https://www.github.com/NeoHsu/project-ci/commit/853cfffd3a9ac97fbf1f599410ddb0f67ba91d6a))
+
 ## [1.1.0](https://www.github.com/NeoHsu/project-ci/compare/v1.0.0...v1.1.0) (2021-09-13)
 
 
